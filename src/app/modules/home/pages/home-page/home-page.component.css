@@ -1,0 +1,6 @@
+.content {
+  margin-left: 17.5rem;     /* ancho del sidebar */
+  width: calc(100vw - 17.5rem);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
