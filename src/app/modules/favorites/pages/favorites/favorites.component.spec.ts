@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HijoPageComponent } from './hijo-page.component';
+import { FavoritesComponent } from './favorites.component';
 
-describe('HijoPageComponent', () => {
-  let component: HijoPageComponent;
-  let fixture: ComponentFixture<HijoPageComponent>;
+describe('FavoritesComponent', () => {
+  let component: FavoritesComponent;
+  let fixture: ComponentFixture<FavoritesComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [HijoPageComponent]
+      declarations: [FavoritesComponent]
     });
-    fixture = TestBed.createComponent(HijoPageComponent);
+    fixture = TestBed.createComponent(FavoritesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

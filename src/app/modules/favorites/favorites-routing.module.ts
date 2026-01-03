@@ -1,15 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthPageComponent } from './pages/auth-page/auth-page.component';
-
+import { FavoritesComponent } from './pages/favorites/favorites.component';
 const routes: Routes = [
   {
-    path: 'login',
-    component: AuthPageComponent
-  },
-  {
-    path: '**',
-    redirectTo: 'login'
+    path: '',
+    component: FavoritesComponent
   }
 ];
 
@@ -17,4 +12,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AuthRoutingModule { }
+export class FavoritesRoutingModule { }

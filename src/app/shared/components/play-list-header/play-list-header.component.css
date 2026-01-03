@@ -1,0 +1,48 @@
+.play-list-header {
+  display: flex;
+  gap: 24px;
+  padding: 24px;
+  background-color: #121212;
+  color: #fff;
+  align-items: center;
+}
+
+.cover {
+  width: 220px;
+  height: 220px;
+  background-color: #2a2a2a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cover-mock {
+  font-size: 80px;
+  color: white;
+}
+
+.content-text {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.small-text {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #b3b3b3;
+}
+
+.title {
+  font-size: 64px;
+  font-weight: bold;
+}
+
+.sub-title {
+  font-size: 14px;
+  color: #b3b3b3;
+}
+
+.count-tracks {
+  margin-left: 8px;
+}

@@ -8,6 +8,9 @@ import { CardPlayerComponent } from './components/card-player/card-player.compon
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { PlayListHeaderComponent } from './components/play-list-header/play-list-header.component';
+import { PlayListBodyComponent } from './components/play-list-body/play-list-body.component';
+import { SortByPipe } from './pipes/sort-by.pipe';
 
 
 @NgModule({
@@ -16,7 +19,10 @@ import { RouterModule } from '@angular/router';
     MediaPlayerComponent,
     HeaderUserComponent,
     SectionGenericComponent,
-    CardPlayerComponent
+    CardPlayerComponent,
+    PlayListHeaderComponent,
+    PlayListBodyComponent,
+    SortByPipe
   ],
   imports: [
     CommonModule,
@@ -30,7 +36,10 @@ import { RouterModule } from '@angular/router';
     CardPlayerComponent,
     MediaPlayerComponent,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PlayListHeaderComponent,
+    PlayListBodyComponent,
+    SortByPipe
   ]
 })
 export class SharedModule { }
