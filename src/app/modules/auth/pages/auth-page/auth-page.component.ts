@@ -8,12 +8,17 @@ import { AuthService } from 'src/app/modules/auth/services/auth.service';
 })
 export class AuthPageComponent {
 
-  constructor(private authService: AuthService) {
-    console.log('AuthPageComponent initialized');
-    authService.sendCretentials('', '');
+  user = {
+    email : '',
+    password : ''
+  } 
 
+  constructor(private authService : AuthService) {
+    console.log('AuthPageComponent created');
   }
+  
   sendLogin() {
-    this.authService.sendCretentials('jdvasquez@gmail.com', '123456');  
+    console.log(this.user);
+    this.authService.sendCretentials(this.user.email, this.user.password);  
   }
 }

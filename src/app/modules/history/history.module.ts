@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { HistoryRoutingModule } from './history-routing.module';
 import { HistoryPagesComponent } from './pages/history-pages/history-pages.component';
+import { SharedModule } from '@shared/shared.module';
 
 const routes: Routes = [{
   path: '',
@@ -12,7 +13,16 @@ const routes: Routes = [{
 
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+
+  declarations: [
+    HistoryPagesComponent
+  ],
+  imports: [
+    CommonModule,
+    HistoryRoutingModule,
+    SharedModule
+  ]
+ 
 })
+
 export class HistoryModule { }

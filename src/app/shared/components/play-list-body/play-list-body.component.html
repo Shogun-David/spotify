@@ -1,12 +1,12 @@
 <div class="play-list-body">
     <ul class="play-list-table-header">
-        <li (click)="setSort('name')">Nombre</li>
-        <li (click)="setSort('album')">Album</li>
-        <li (click)="setSort('_id')">Fecha incorporación</li>
+        <li (click)="changeSort('name')">Nombre</li>
+        <li (click)="changeSort('Album')">Album</li>
+        <li>Fecha incorporación</li>
         <li><i class="ul ul1-clock-eight"></i></li>
     </ul>
-    
-    <ul class="play-list-rows" *ngFor="let track of tracks | sortBy:sortField:sortDirection">
+
+    <ul class="play-list-rows" *ngFor="let track of tracks | orderList:optionsSort.property : optionsSort.order">
         <li class="track-name">
             <ng-container *ngTemplateOutlet="coverSection; context: { track: track }"></ng-container>
         </li>

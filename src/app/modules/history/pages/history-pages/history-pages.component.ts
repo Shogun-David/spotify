@@ -9,10 +9,24 @@ import { ActivatedRoute } from '@angular/router';
 export class HistoryPagesComponent {
 
   usuario : string = '';
+  
+
+  user = {
+    name: 'Juan',
+    email: 'juan@example.com',
+    age : null
+  }
+
+
+
   constructor(private route:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.usuario = this.route.snapshot.paramMap.get('texto') || '';
     console.log(this.usuario);
+  }
+
+  onSubmit() {
+    console.log(this.user);
   }
 }

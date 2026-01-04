@@ -11,6 +11,8 @@ import { RouterModule } from '@angular/router';
 import { PlayListHeaderComponent } from './components/play-list-header/play-list-header.component';
 import { PlayListBodyComponent } from './components/play-list-body/play-list-body.component';
 import { SortByPipe } from './pipes/sort-by.pipe';
+import { OrderListPipe } from './pipes/order-list.pipe';
+import { ImgBrokenDirective } from './directives/img-broken.directive';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { SortByPipe } from './pipes/sort-by.pipe';
     CardPlayerComponent,
     PlayListHeaderComponent,
     PlayListBodyComponent,
-    SortByPipe
+    SortByPipe,
+    OrderListPipe,
+    ImgBrokenDirective
   ],
   imports: [
     CommonModule,
@@ -39,7 +43,8 @@ import { SortByPipe } from './pipes/sort-by.pipe';
     ReactiveFormsModule,
     PlayListHeaderComponent,
     PlayListBodyComponent,
-    SortByPipe
+    SortByPipe,
+    OrderListPipe
   ]
 })
 export class SharedModule { }
