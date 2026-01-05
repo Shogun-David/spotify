@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { MessageService } from '@shared/services/message.service';
 import { DataServiceService } from 'src/app/shared/services/data-service.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { DataServiceService } from 'src/app/shared/services/data-service.service
 })
 export class HistoryPagesComponent implements OnInit {
 
-  constructor(private dataService: DataServiceService){}
+  constructor(private dataService: DataServiceService, private messageService: MessageService){}
 
   ngOnInit(): void{
 
@@ -17,6 +18,10 @@ export class HistoryPagesComponent implements OnInit {
   
   updateData(){
     this.dataService.updateData('nuevo valor desde history pages');
+  }
+
+  updateMessage(){
+    this.messageService.sendMessage('mensaje desde history pages');
   }
   
 }
