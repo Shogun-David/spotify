@@ -1,20 +1,24 @@
 import { Injectable } from '@angular/core';
-import * as dataRow from 'src/app/data/tracks.json'
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { TrackModel } from '@core/models/track.model';
-import { Observable, of } from 'rxjs';
+import { OnDestroy } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class TracksService {
 
-  dataTracksBetter$: Observable<TrackModel[]> = of([]);
-  dataTracksElectronic$: Observable<TrackModel[]> = of([]);
-
-  constructor(){
-  const {data}: any = (dataRow as any).default;
-  this.dataTracksBetter$ = of(data);
-  this.dataTracksElectronic$ = of(data);
+  constructor(private httpClient: HttpClient) {
     
+  }
+
+  getTrack(): TrackModel[]{
+    return new Array<TrackModel>();
+  }
+  
+  getAllTracks$() : Observable<TrackModel[]>{
+    return this.httpClient.get<TrackModel[]>('http://localhost:3000/api/1.0/tracks');
   }
 }

@@ -84,16 +84,7 @@ export class SidebarComponent implements OnInit {
       }
     ];
 
-    const tracksElectronic$ = this.tracksService.dataTracksElectronic$.subscribe({
-      next: (data) => {
-        data.forEach(track => {
-          this.customOptions.push({
-            name: track.name,
-            router: ['/', 'tracks', track.id]
-          });
-        });
-      }
-    });
+    
 
 
   }
