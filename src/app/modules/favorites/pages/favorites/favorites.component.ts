@@ -23,7 +23,7 @@ export class FavoritesComponent implements OnInit, OnDestroy {
       console.log('Data de estado', data);
     });
 
-    this.messageSubscription = this.messageService.messaje$.subscribe(message => {
+    this.messageSubscription = this.messageService.message$.subscribe(message => {
       console.log('Mensaje recibido:', message);
     });
   }

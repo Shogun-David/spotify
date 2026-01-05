@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Data, RouterLink } from '@angular/router';
+import { DataServiceService } from '@shared/services/data-service.service';
+import { MessageService } from '@shared/services/message.service';
+import { Observable } from 'rxjs';
 import { TracksService } from 'src/app/modules/tracks/services/tracks.service';
+
 
 @Component({
   selector: 'app-sidebar',
@@ -17,7 +21,17 @@ export class SidebarComponent implements OnInit {
 
   customOptions : Array<any> = [];
 
-  constructor(private tracksService: TracksService) { }
+  currentData$!: Observable<string>;
+  currentMessage$!: Observable<string>;
+
+  constructor(private tracksService: TracksService,
+    private dataService: DataServiceService,
+    private messageService: MessageService
+  ) {
+    this.currentData$ = this.dataService.currentData;
+    this.currentMessage$ = this.messageService.message$;
+  }
+  
 
   ngOnInit(){
     this.mainMenu.defaultOptions = [
@@ -80,6 +94,7 @@ export class SidebarComponent implements OnInit {
         });
       }
     });
+
 
   }
 
