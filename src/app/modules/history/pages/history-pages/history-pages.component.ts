@@ -1,32 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { DataServiceService } from 'src/app/shared/services/data-service.service';
 
 @Component({
   selector: 'app-history-pages',
   templateUrl: './history-pages.component.html',
   styleUrls: ['./history-pages.component.css']
 })
-export class HistoryPagesComponent {
+export class HistoryPagesComponent implements OnInit {
 
-  usuario : string = '';
+  constructor(private dataService: DataServiceService){}
+
+  ngOnInit(): void{
+
+  }
   
-
-  user = {
-    name: 'Juan',
-    email: 'juan@example.com',
-    age : null
+  updateData(){
+    this.dataService.updateData('nuevo valor desde history pages');
   }
-
-
-
-  constructor(private route:ActivatedRoute) { }
-
-  ngOnInit(): void {
-    this.usuario = this.route.snapshot.paramMap.get('texto') || '';
-    console.log(this.usuario);
-  }
-
-  onSubmit() {
-    console.log(this.user);
-  }
+  
 }
