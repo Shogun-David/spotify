@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/modules/auth/services/auth.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'app-auth-page',
@@ -24,8 +25,19 @@ export class AuthPageComponent implements OnInit {
     }
 
     sendLogin() {
-    if (this.formLogin.valid) {
-    this.authService.sendCredentials(this.formLogin.value.email, this.formLogin.value.password);
-    }
+        if (this.formLogin.valid) {
+            this.authService.sendCredentials(this.formLogin.value.email, this.formLogin.value.password)
+                .subscribe({
+                    next:(response) => {
+                        console.log('Login successful', response); 
+                    },
+                    error:(error) => {
+                        console.error('Login failed', error);
+                    }
+                });
+        } 
+        else {
+            console.log('Form is invalid');
+        }
     }
 }

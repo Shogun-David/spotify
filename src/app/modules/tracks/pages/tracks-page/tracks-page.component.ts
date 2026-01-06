@@ -1,27 +1,36 @@
-import { Component, OnInit, OnDestroy} from '@angular/core';
-import { TrackModel } from 'src/app/core/models/track.model';
-import { TracksService } from '../../services/tracks.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { TrackModel } from '@core/models/track.model';
+import { TracksService } from 'src/app/modules/tracks/services/tracks.service';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-tracks-page',
-  templateUrl: './tracks-page.component.html',
-  styleUrls: ['./tracks-page.component.css']
+    selector: 'app-tracks-page',
+    templateUrl: './tracks-page.component.html',
+    styleUrls: ['./tracks-page.component.css']
 })
-export class TracksPageComponent implements OnInit {
-  tracksBetter: Array<TrackModel> = [];
-  tracksElectronic: Array<TrackModel> = [];
-
-  constructor(private tracksService: TracksService) { }
+export class TracksPageComponent implements OnInit, OnDestroy {
+    trackBetter: Array<TrackModel> = [];
+    trackElectronic: Array<TrackModel> = [];
+    
   
+    
+    constructor(private tracksService: TracksService) {}
+    
   ngOnInit(): void {
+    // Primer subscribe
     this.tracksService.getAllTracks$().subscribe(tracks => {
-      console.log(tracks);
+        console.log(tracks);
+        this.trackBetter = tracks;
     });
-  }
 
-  ngOnDestroy(): void {
-
-  }
+    // Segundo subscribe
+    this.tracksService.getAllElectronic$().subscribe(tracks => {
+        this.trackElectronic = tracks;
+    });
 }
-
+    
+    
+    ngOnDestroy(): void {
+       
+    }
+}

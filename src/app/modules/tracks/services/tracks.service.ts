@@ -1,24 +1,43 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
 import { TrackModel } from '@core/models/track.model';
-import { OnDestroy } from '@angular/core';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environments';
+import  { map } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
-
 export class TracksService {
 
-  constructor(private httpClient: HttpClient) {
-    
-  }
+    private readonly URL = environment.api;
 
-  getTrack(): TrackModel[]{
-    return new Array<TrackModel>();
-  }
-  
-  getAllTracks$() : Observable<TrackModel[]>{
-    return this.httpClient.get<TrackModel[]>('http://localhost:3000/api/1.0/tracks');
-  }
+    constructor(private httpClient: HttpClient) {
+    }
+
+    getTrack(): TrackModel[] {
+        return new Array<TrackModel>();
+    }
+
+    getAllTracks$(): Observable<TrackModel[]> {
+        return this.httpClient.get<any>(`${this.URL}/tracks`).pipe(
+            map((response)=>{
+                return response.data;
+            })
+        );
+    }
+
+     getAllElectronic$(): Observable<TrackModel[]> {
+        return this.httpClient.get<any>(`${this.URL}/tracks`).pipe(
+            map((response)=>{
+                return response.data.reverse();
+
+            }),
+            map((dataInvertida)=>{
+                return dataInvertida.filter((track: TrackModel) =>{
+                    return track._id !== 1; // Agrega aquí tu lógica de filtro
+                });
+            })
+        );
+    }
 }

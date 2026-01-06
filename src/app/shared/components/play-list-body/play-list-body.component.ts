@@ -20,9 +20,9 @@ export class PlayListBodyComponent {
   constructor(private trackService: TracksService) {}
 
   ngOnInit(): void {
-   // const tracksSubscription = this.trackService.dataTracksBetter$.subscribe(tracks => {
-     // this.tracks = tracks;
-    //});
+   const tracksSubscription = this.trackService.getAllElectronic$().subscribe(tracks => {
+    this.tracks = tracks;
+    });
     
   }
 

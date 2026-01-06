@@ -3,6 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthPageComponent } from './pages/auth-page/auth-page.component';
 
 const routes: Routes = [
+
+
+  //aca en el video 58:11 está diferente
   {
     path: 'login',
     component: AuthPageComponent
