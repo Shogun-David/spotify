@@ -25,8 +25,6 @@ export class PlayListBodyComponent {
     });
     
   }
-
-
   changeSort(property: string): void {
   const { order } = this.optionsSort;
   this.optionsSort = {

@@ -26,11 +26,7 @@ export class TracksService {
     }
 
     getAllTracks$(): Observable<TrackModel[]> {
-        return this.httpClient.get<any>(`${this.URL}/tracks`, {
-            headers: new HttpHeaders({
-                'authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3Njc4MjMxNTAsImV4cCI6MTc2NzgzMDM1MH0.15_hu-QlK_O3zjEc5orX07VXcME4L-tVOgYry7qkjdA'
-          })
-        }).pipe(
+        return this.httpClient.get<any>(`${this.URL}/tracks`).pipe(
             map((response) =>{
                 return response.data;
             })
@@ -39,11 +35,7 @@ export class TracksService {
     }
 
     getAllElectronics$(): Observable<TrackModel[]> {
-        return this.httpClient.get<any>(`${this.URL}/tracks`, {
-            headers: new HttpHeaders({
-                'authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3Njc4MjMxNTAsImV4cCI6MTc2NzgzMDM1MH0.15_hu-QlK_O3zjEc5orX07VXcME4L-tVOgYry7qkjdA'
-         })
-        }).pipe(
+        return this.httpClient.get<any>(`${this.URL}/tracks`).pipe(
             mergeMap(({data}) => this.skipById(data, 5))
         );
     }
