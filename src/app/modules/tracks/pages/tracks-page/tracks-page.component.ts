@@ -18,13 +18,13 @@ export class TracksPageComponent implements OnInit, OnDestroy {
     
   ngOnInit(): void {
     // Primer subscribe
-    this.tracksService.getAllTracks$().subscribe(tracks => {
+    this.tracksService.getAllTracks$().subscribe((tracks: TrackModel[]) => {
         console.log(tracks);
         this.trackBetter = tracks;
     });
 
     // Segundo subscribe
-    this.tracksService.getAllElectronic$().subscribe(tracks => {
+    this.tracksService.getAllElectronics$().subscribe((tracks: TrackModel[]) => {
         this.trackElectronic = tracks;
     });
 }
