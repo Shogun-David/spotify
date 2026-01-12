@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TrackModel } from '@core/models/track.model';
 import { TracksService } from '@modules/tracks/services/tracks.service';
 import { Subscription } from 'rxjs';
+import { Input } from '@angular/core';
 
 @Component({
   selector: 'app-play-list-body',
@@ -10,7 +11,7 @@ import { Subscription } from 'rxjs';
 })
 export class PlayListBodyComponent {
 
-  tracks: Array<TrackModel> = [];
+  @Input() tracks: Array<TrackModel> = [];
   optionsSort = {
     property: null as string | null,
     order: 'asc'
@@ -20,9 +21,9 @@ export class PlayListBodyComponent {
   constructor(private trackService: TracksService) {}
 
   ngOnInit(): void {
-   const tracksSubscription = this.trackService.getAllElectronics$().subscribe(tracks => {
-    this.tracks = tracks;
-    });
+  //  const tracksSubscription = this.trackService.getAllElectronics$().subscribe(tracks => {
+  //   this.tracks = tracks;
+  //   });
     
   }
   changeSort(property: string): void {

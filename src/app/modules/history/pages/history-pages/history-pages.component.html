@@ -1,2 +1,4 @@
-<button (click)="updateData()">Actualizar Datos</button>
-<button (click)="updateMessage()">Actualizar Mensaje</button>
+<div class="history-pages">
+    <app-search (callbackData)="search($event)"></app-search>
+    <app-play-list-body [tracks]="tracks | async"></app-play-list-body>
+</div>

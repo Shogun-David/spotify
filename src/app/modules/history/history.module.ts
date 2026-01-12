@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HistoryRoutingModule } from './history-routing.module';
 import { HistoryPagesComponent } from './pages/history-pages/history-pages.component';
 import { SharedModule } from '@shared/shared.module';
+import { SearchComponent } from './components/search/search.component';
 
 const routes: Routes = [{
   path: '',
@@ -16,7 +17,8 @@ const routes: Routes = [{
 @NgModule({
 
   declarations: [
-    HistoryPagesComponent
+    HistoryPagesComponent,
+    SearchComponent
   ],
   imports: [
     CommonModule,

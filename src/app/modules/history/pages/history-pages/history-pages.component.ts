@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { TrackModel } from '@core/models/track.model';
+import { SearchService } from '@modules/history/services/search.service';
 import { MessageService } from '@shared/services/message.service';
+import { Observable, of } from 'rxjs';
 import { DataServiceService } from 'src/app/shared/services/data-service.service';
 
 @Component({
@@ -10,18 +13,16 @@ import { DataServiceService } from 'src/app/shared/services/data-service.service
 })
 export class HistoryPagesComponent implements OnInit {
 
-  constructor(private dataService: DataServiceService, private messageService: MessageService){}
+  tracks : Observable<any> = of([]);
+  constructor(private searchService: SearchService){}
 
   ngOnInit(): void{
 
   }
-  
-  updateData(){
-    this.dataService.updateData('nuevo valor desde history pages');
-  }
 
-  updateMessage(){
-    this.messageService.sendMessage('mensaje desde history pages');
+  search(term: string){
+    this.tracks = this.searchService.searchTracks(term);
+  
   }
   
 }

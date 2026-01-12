@@ -10,7 +10,7 @@
         
         <div class="separator"></div>
         
-        <form (ngSubmit)="sendLogin()" [formGroup]="formLogin" class="login-e">
+        <form (ngSubmit)="sendLogin()" [formGroup]="formLogin" class="login-auth-form">
             <div class="form-group">
                 <label for="email">Dirección de correo</label>
                 <input formControlName="email" type="text" placeholder="Direct">
@@ -28,6 +28,8 @@
             <div *ngIf="false">
                 | Ocurrio un error con tu email o password
             </div>
+            
+
             
             <div class="form-action">
                 | <button class="login social-btn">Iniciar sesión</button>
