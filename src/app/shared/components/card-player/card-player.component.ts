@@ -19,7 +19,7 @@ export class CardPlayerComponent {
   }
 
   sendTrack(track: TrackModel){
-    this.mediaService.callback.emit(track);
+    this.mediaService.trackInfo$.next(track);
     console.log('Emitted track:', track);
   }
 

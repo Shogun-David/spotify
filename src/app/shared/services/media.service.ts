@@ -1,4 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
+import { TrackModel } from '@core/models/track.model';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 
@@ -6,21 +7,24 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 	providedIn: 'root'
 })
 export class MediaService {
-	callback: EventEmitter<any> = new EventEmitter<any>();
-	observable : Observable<any> = new Observable();
-	subject$: Subject<any> = new Subject<any>();
-	behaviorSubject$: BehaviorSubject<any> = new BehaviorSubject<any>('vacio');
+	
+	trackInfo$: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+	public audio!: HTMLAudioElement;
 
 	constructor() {
-		this.observable = new Observable((subscriber) => {
-			subscriber.next('Media Service Observable Initialized');
-			subscriber.complete();
-			subscriber.error('Media Service Observable Error');
-		});
-
-		setTimeout(() => {
-			this.subject$.next('Media Service Subject Emission after 5 seconds');
-		}, 5000);
+		console.log('MediaService initialized');
+		this.audio = new Audio();
+		this.trackInfo$.subscribe(track => {
+			if (track) {
+				this.setAudio(track);
+			}
+		});	
 		
 	}
+
+	private setAudio(track: TrackModel): void {
+		this.audio.src = track.url;
+		this.audio.play();	
+	}
+
 }	
